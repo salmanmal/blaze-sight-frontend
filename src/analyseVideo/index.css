@@ -1,0 +1,11 @@
+@keyframes mymove {
+  from {background-color: red;}
+  to {background-color: white;}
+}
+.fire-alert {
+  background-color: red;
+  animation: mymove 1s infinite;
+}
+video#frame-by-frame {
+    height: 500px;
+}

@@ -1,0 +1,43 @@
+.camera-border {
+  border: 2px solid #e81515;
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: 60px;
+  left: 355px;
+}
+
+
+
+.webcam-controls{
+  width: 100%;
+  padding: 5px;
+}
+textarea{
+  width: 100%;
+  height: 160px;
+}
+.audio{
+  width: 100%;
+}
+
+.row{
+  margin-top : 20px;
+  margin-bottom : 10px;
+}
+
+.dataCard{
+  box-shadow : 4px 4px 13px 2px;
+  margin : 20px;
+  padding : 20px;
+  border-radius : 4px;
+  background-color: #ffffff;
+}
+
+.hide{
+  display: none;
+}
+
+.signs-banner-div{
+  text-align: center;
+}

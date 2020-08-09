@@ -1,24 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import axios from "axios";
+import logo from "./logo.svg";
+import WebCam from "./webcam";
+import ExtractFrames from "./analyseVideo";
+import PredictImage from "./predictImage";
+import { API_URL } from "./Constants";
+
+import "./App.css";
 
 function App() {
+  const sendNotification = () => {
+    axios
+      .post(API_URL + "sendNotification", {
+        email: "salmanmal00@gmail.com",
+        mobile: "6692819690",
+      })
+      .then((response) => {
+        console.log(response.data);
+      });
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={sendNotification}></button>
+      <WebCam />
+      <PredictImage />
+      <ExtractFrames />
     </div>
   );
 }
