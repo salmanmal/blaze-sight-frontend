@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { API_URL } from "../Constants";
+import { API_URL, sendNotification } from "../Constants";
 import axios from "axios";
 import Webcam from "react-webcam";
 import CameraOff from "../video-not-working.png";
@@ -46,6 +46,7 @@ const WebcamCapture = () => {
           console.log("final arr", predi);
           if (predi.filter((i) => i == "fire").length >= 18) {
             setAlert(true);
+            sendNotification();
           } else {
             setAlert(false);
           }

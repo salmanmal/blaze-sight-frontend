@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { API_URL } from "../Constants";
+import { API_URL, sendNotification } from "../Constants";
 import "./index.css";
 
 function captureVideoFrames(videoId, format, quality) {
@@ -86,12 +86,15 @@ export default class ExtractVideoFrames extends Component {
     axios
       .post(API_URL + "predict", data)
       .then((response) => {
-        let { prediction, count, alert } = this.state;
-        alert = false;
+        let { prediction, count } = this.state;
+        let alert = false;
         prediction[count % 30] = response.data;
         console.log("prediction", prediction);
         const firecount = prediction.filter((i) => i == "fire").length;
-        if (firecount >= 15) alert = true;
+        if (firecount >= 15) {
+          alert = true;
+          if (!this.state.alert) sendNotification();
+        }
         this.setState({
           prediction,
           count: count + 1,
@@ -137,7 +140,7 @@ export default class ExtractVideoFrames extends Component {
   };
   render() {
     const { alert, videoSrc } = this.state;
-    
+
     return (
       <div className={``}>
         <div className={`dataCard ${alert && "fire-alert"}`}>
